@@ -8,6 +8,7 @@ import java.util.EmptyStackException;
 public class List {
     private Link firstLink;
     private Link lastLink;
+    private Link insertionPoint=null;
 
     public List() {
         firstLink=null;
@@ -45,16 +46,35 @@ public class List {
         return temp;
     }
     public boolean isEmpty() {
-        return false;
+        return (firstLink==null && lastLink==null);
     }
     public boolean findKey(int key) {
+        if (firstLink.getDatum()==key) {
+            insertionPoint=firstLink;
+            return true;
+        }
+        for (Link temp = firstLink.getNext();temp!=null;temp=temp.getNext()) {
+            if (temp.getDatum()==key) insertionPoint = temp;
+            return true;
+        }
         return false;
     }
     public boolean insertKey(int number) {
-        return false;
+        if (insertionPoint==null) return false;
+    Link newLink = new Link(number);//**This might not make any sense**
+        newLink.setNext(insertionPoint);//**Don't forget to check this part**
+        newLink.setPrevious(insertionPoint.getPrevious());
+        insertionPoint.setPrevious(newLink);
+        insertionPoint.getPrevious().setNext(newLink);
+        return true;
     }
     public boolean deleteKey(int key) {
-        return false;
+        if (firstLink.getDatum()==key) deleteHead();
+        for (Link stepThrough = firstLink.getNext();stepThrough.getDatum()!=key;stepThrough=stepThrough.getNext()) {
+            if (stepThrough.getNext()==null) return false;//return if key is not in the list
+        }
+        //write code for delete.
+        return true;
     }
     public String displayList() {
         return "";

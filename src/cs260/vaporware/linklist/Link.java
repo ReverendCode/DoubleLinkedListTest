@@ -13,18 +13,18 @@ public class Link {
         datum=n;
     }
     public void setNext(Link nextLink) {
-
+        next=nextLink;
     }
     public Link getNext() {
-        return null;
+        return next;
     }
     public void setPrevious(Link prevLink) {
-
+        previous=prevLink;
     }
     public Link getPrevious() {
-        return null;
+        return previous;
     }
     public int getDatum() {
-        return 0;
+        return datum;
     }
 }
