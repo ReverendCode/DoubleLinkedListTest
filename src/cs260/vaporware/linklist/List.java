@@ -72,7 +72,7 @@ public class List {
             firstLink.getNext().setPrevious(null);
             firstLink=firstLink.getNext();
             return true;
-        }
+        }  
         if (lastLink.getDatum()==key) {
             lastLink.getPrevious().setNext(null);
             lastLink = lastLink.getPrevious();
