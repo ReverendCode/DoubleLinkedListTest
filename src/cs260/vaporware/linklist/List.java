@@ -22,7 +22,7 @@ public class List {
         firstLink=insert;
 
     }
-    public void insertTail(int number) {
+    public void insertTail(int number) {//assumes valid inputs
         Link insert = new Link(number);
         if (isEmpty()) firstLink = insert;
         else lastLink.setNext(insert);
@@ -30,8 +30,7 @@ public class List {
         lastLink=insert;
 
     }
-    public int deleteHead() {
-        //if (isEmpty()) return 0; //learn how to throw an exception
+    public int deleteHead() {//assumes valid inputs
         int temp = firstLink.getDatum();
         if (firstLink.getNext()==null) lastLink=null;
         else firstLink.getNext().setPrevious(null);//this is much clearer than the public Link method
@@ -64,20 +63,40 @@ public class List {
     Link newLink = new Link(number);//**This might not make any sense**
         newLink.setNext(insertionPoint);//**Don't forget to check this part**
         newLink.setPrevious(insertionPoint.getPrevious());
-        insertionPoint.setPrevious(newLink);
         insertionPoint.getPrevious().setNext(newLink);
+        insertionPoint.setPrevious(newLink);
         return true;
     }
     public boolean deleteKey(int key) {
-        if (firstLink.getDatum()==key) deleteHead();
-        for (Link stepThrough = firstLink.getNext();stepThrough.getDatum()!=key;stepThrough=stepThrough.getNext()) {
-            if (stepThrough.getNext()==null) return false;//return if key is not in the list
+        if (firstLink.getDatum()==key) {
+            firstLink.getNext().setPrevious(null);
+            firstLink=firstLink.getNext();
+            return true;
         }
-        //write code for delete.
-        return true;
+        if (lastLink.getDatum()==key) {
+            lastLink.getPrevious().setNext(null);
+            lastLink = lastLink.getPrevious();
+            return true;
+        }
+
+        for (Link temp=firstLink.getNext();temp!=null;temp = temp.getNext()) {
+            if (temp.getDatum()==key) {
+                temp.getNext().setPrevious(temp.getPrevious());
+                temp.getPrevious().setNext(temp.getNext());
+                return true;
+            }
+        }
+        return false;
     }
     public String displayList() {
-        return "";
+        if (isEmpty()) return "\nNothing to display\n";
+        String output = String.valueOf(firstLink.getDatum());
+            for (Link temp = firstLink.getNext();temp!=null;temp=temp.getNext()) {
+                 output += " "+temp.getDatum();
+            }
+
+
+        return output;
     }
 
 
