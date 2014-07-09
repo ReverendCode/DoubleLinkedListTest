@@ -8,7 +8,9 @@ public class Link {
     private int datum;
     private Link next;
     private Link previous;
+    private final int DEFAULT_INT=0;
 
+    public Link() {datum=DEFAULT_INT;}
     public Link(int n) {
         datum=n;
     }
