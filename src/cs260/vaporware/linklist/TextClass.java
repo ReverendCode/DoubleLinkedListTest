@@ -12,8 +12,8 @@ public class TextClass extends List {
     public boolean removeLetter(char key) {//and vice versa
         return super.deleteKey((int)key);
     }
-    public boolean findLetter(char key) {//why are you not setting the insertionpoint properly?
-        return super.findKey((int)key);//*Note* Cleaning up the underlying function fixed this^
+    public boolean findLetter(char key) {//why are you not setting the insertionPoint properly?
+        return super.findKey((int)key);//*Note* Cleaning up the underlying function fixed this^ It was a little wonky before.
     }
     public boolean insertLetter(char newLetter) {
         return super.insertKey((int)newLetter);//this can't work if it doesn't have a cursor
@@ -25,9 +25,9 @@ public class TextClass extends List {
         }
         return output;
     }
-    public void joinStrings (TextClass secondList) {
+    public void joinStrings (TextClass secondList) {//this should be an O(1) solution
         TextClass temp = secondList;
-        secondList.firstLink.setPrevious(lastLink);//may need 'this' here?
+        secondList.firstLink.setPrevious(lastLink);//may need 'this.lastLink' here?
         lastLink.setNext(secondList.firstLink);  //It seems to work better without it.
         lastLink=secondList.lastLink; //perhaps it is an implicit 'this'?
         secondList=temp; //this should maintain the second list

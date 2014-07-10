@@ -59,6 +59,7 @@ public class List {
             return true;
         }
         return false;*/
+
         //   **New Hotness**
         if (isEmpty()) return false;
         for (Link temp=firstLink;temp!=null;temp=temp.getNext()) {
@@ -103,6 +104,13 @@ public class List {
         }
         return false;
     }
+    public boolean deleteInsertion() {
+        if (insertionPoint==null) return false;
+        insertionPoint.getNext().setPrevious(insertionPoint.getPrevious());
+        insertionPoint.getPrevious().setNext(insertionPoint.getNext());
+        insertionPoint=insertionPoint.getNext();//this moves the cursor to the next spot
+        return true;
+    }
     public String displayList() {
         if (isEmpty()) throw new EmptyStackException();
         String output = String.valueOf(firstLink.getDatum());
@@ -113,6 +121,4 @@ public class List {
 
         return output;
     }
-
-
 }

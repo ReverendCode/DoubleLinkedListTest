@@ -72,14 +72,35 @@ public class Main {
         System.out.println("Add an 'X' before the 'e': " + testString.showList());
 
 
-        TextClass oneList = new TextClass();
+        TextClass oneList = new TextClass();//redList blueList?
         TextClass twoList = new TextClass();
-        addSomeLetters("This is a cat",oneList);
-        addSomeLetters("That is a dog",twoList);
+        addSomeLetters("This is a cat.",oneList);
+        addSomeLetters("That is a dog.",twoList);
         System.out.println("First list: "+oneList.showList()+"\nSecond list: "+twoList.showList());
         oneList.joinStrings(twoList);
         System.out.println("\nJoined: "+oneList.showList());
         System.out.print(twoList.showList());
+        oneList.findLetter('.');
+        oneList.deleteInsertion();
+        oneList.deleteInsertion();
+        insertSomeLetters(" and t",oneList,'t','T');
+        System.out.print("\nFixed string: "+oneList.showList());
+        //testing circular linkList
+        CircularList roundRobin = new CircularList();
+        roundRobin.insertItem('a');
+        roundRobin.insertItem('b');
+        roundRobin.insertItem('c');
+        roundRobin.insertItem('d');
+        System.out.println("\n" + roundRobin.displayList());
+        roundRobin.stepLink(3);
+        System.out.println("Move pointer 3 spaces and remove: "+roundRobin.deleteItem());
+        roundRobin.insertItem('0');
+        System.out.println("\nAdd a 0: "+roundRobin.displayList());
+        System.out.print("\nDemonstrate stack:\n");
+        System.out.println(roundRobin.deleteItem());
+        System.out.println(roundRobin.deleteItem());
+        System.out.println(roundRobin.deleteItem());
+        System.out.println(roundRobin.deleteItem());
 
     }
 
