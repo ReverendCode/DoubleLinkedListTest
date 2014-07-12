@@ -71,7 +71,6 @@ public class Main {
         testString.insertLetter('X');
         System.out.println("Add an 'X' before the 'e': " + testString.showList());
 
-
         TextClass oneList = new TextClass();//redList blueList?
         TextClass twoList = new TextClass();
         addSomeLetters("This is a cat.",oneList);
@@ -85,6 +84,7 @@ public class Main {
         oneList.deleteInsertion();
         insertSomeLetters(" and t",oneList,'t','T');
         System.out.print("\nFixed string: "+oneList.showList());
+
         //testing circular linkList
         CircularList roundRobin = new CircularList();
         roundRobin.insertItem('a');

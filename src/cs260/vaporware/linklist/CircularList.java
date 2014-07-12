@@ -5,9 +5,9 @@ import java.util.EmptyStackException;
 /**
  * Created by Code on 7/9/14.
  */
-public class CircularList {
-    private static final boolean stack=true;//choose your own adventure
-    private static final boolean queue=false;//alter these to have deleteItem function as a stack or queue
+public class CircularList {//only pick one of these at a time, or bad things might happen
+    private static final boolean stack=true;//choose your own adventure.
+    private static final boolean queue=false;//these affect deleteItem only
 
     private Link pointer;//points to the top of the stack
     public CircularList() {
@@ -46,7 +46,7 @@ public class CircularList {
             pointer=pointer.getNext();
         }
         if (queue) {//now with bonus optional queue implementation.
-            if (isEmpty()) return 0;
+            if (isEmpty()) throw new EmptyStackException();
             temp=(char)pointer.getPrevious().getDatum();
             if (pointer.getPrevious()==pointer) {
                 pointer=null;
