@@ -71,6 +71,7 @@ public class Main {
         testString.insertLetter('X');
         System.out.println("Add an 'X' before the 'e': " + testString.showList());
 
+
         TextClass oneList = new TextClass();//redList blueList?
         TextClass twoList = new TextClass();
         addSomeLetters("This is a cat.",oneList);
@@ -84,6 +85,12 @@ public class Main {
         oneList.deleteInsertion();
         insertSomeLetters(" and t",oneList,'t','T');
         System.out.print("\nFixed string: "+oneList.showList());
+
+
+        //Fix this edge case
+        System.out.print("\nPrint second string again: "+twoList.showList());
+        addSomeLetters("I am spartacus. ",twoList);
+        System.out.print("\n"+oneList.showList());
 
         //testing circular linkList
         CircularList roundRobin = new CircularList();

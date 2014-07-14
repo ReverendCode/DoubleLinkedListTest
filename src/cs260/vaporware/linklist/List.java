@@ -121,4 +121,10 @@ public class List {
 
         return output;
     }
+    
+    public boolean reFind(Link ptr, int v) {
+        if (ptr==null) return false;
+        if (ptr.getDatum()==v) return true;
+        else return reFind(ptr.getNext(),v);
+    }
 }

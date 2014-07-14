@@ -25,11 +25,18 @@ public class TextClass extends List {
         }
         return output;
     }
-    public void joinStrings (TextClass secondList) {//this should be an O(1) solution
-        TextClass temp = secondList;
+    public void joinStrings (TextClass secondList) {
+
+       String temp = secondList.showList();
+        for (int i=0;i<temp.length();i++) {
+            insert(temp.charAt(i));
+        }
+
+        /*
         secondList.firstLink.setPrevious(lastLink);//may need 'this.lastLink' here?
         lastLink.setNext(secondList.firstLink);  //It seems to work better without it.
         lastLink=secondList.lastLink; //perhaps it is an implicit 'this'?
         secondList=temp; //this should maintain the second list
+        */
     }
 }
